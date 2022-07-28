@@ -1,25 +1,27 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from './HomePage';
-import GetListingCardList from './GetListingCardList';
-import GetListingDetail from './GetListingDetail';
-import AddListingForm from './AddListingForm';
+import GetListingCardList from './listings/GetListingCardList';
+import GetListingDetail from './listings/GetListingDetail';
+import AddListingForm from './listings/AddListingForm';
 import Login from "./Login";
 import Signup from "./Signup";
 import Logout from "./Logout";
 import { useContext } from "react";
 import userContext from "./userContext";
 
-/** To route user activity to applicable components.
- *
- *  Context: user
- *         (i.e. { username, firstName, lastName, email, isAdmin })
+/** TODO:
+ *  RoutesList
  *
  *  Props:
- *      - logout(), signUp(), login(), updateUser()
+ *    - functions: { login, signup } from App
  *
- *  No state.
+ *  State:
+ *    - None
  *
- *  App -> RouteList
+ *  Context:
+ *    - user { username, firstName, lastName, email, isAdmin }
+ *
+ *  App -> RoutesList -> Routes
  */
 
 function RouteList({ logout, signUp, logIn, updateUser }) {

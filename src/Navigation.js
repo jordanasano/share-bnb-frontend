@@ -3,14 +3,16 @@ import "./Navigation.css";
 import userContext from "./userContext";
 import { useContext } from "react";
 
-/** To render the navigation bar.
+ /**  Navigation TODO:
  *
- *  Context: user
- *         (i.e. { username, firstName, lastName, email, isAdmin })
+ *  Props:
+ *    - logout: fn passed from App
  *
- *  No props.
+ *  State:
+ *    - None
  *
- *  No state.
+ *  Context:
+ *    - user { username, firstName, lastName, email, isAdmin }
  *
  *  App -> Navigation
  */
@@ -20,7 +22,7 @@ function Navigation() {
 
   const user = useContext(userContext);
 
-
+  //TODO: add login from joel's
   return (
     <nav className="Navigation">
       <NavLink className="home" to="/">
