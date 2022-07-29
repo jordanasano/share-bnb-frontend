@@ -106,6 +106,19 @@ class ShareBNBApi {
     this.token = res.token;
     return res.token;
   }
+
+  //TODO:
+  /** On registering - get token by making a POST request to /signup:
+  * { username, password, first_name, last_name, email } => token
+  */
+
+   static async getUserDetails() {
+    let res = await this.request(
+      'user'
+    );
+
+    return res.user;
+  }
 }
 
 export default ShareBNBApi;

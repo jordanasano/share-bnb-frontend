@@ -17,7 +17,7 @@ import { useContext } from "react";
  *  App -> Navigation
  */
 
-function Navigation() {
+function Navigation({logout}) {
   console.log("We're in the Navigation component");
 
   const user = useContext(userContext);
@@ -37,8 +37,8 @@ function Navigation() {
           <NavLink className="Navigation-add" to="/listings/add">
             Add Listing
           </NavLink>
-          <NavLink className="Navigation-logout" to="/logout">
-            Logout, {user.username}
+          <NavLink to="/">
+            <span onClick={logout}>Log out {user.username}</span>
           </NavLink>
         </div>)
         : (<div>

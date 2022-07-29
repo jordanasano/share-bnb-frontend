@@ -45,9 +45,6 @@ function RouteList({ logout, signUp, logIn, updateUser }) {
           <Route
             path="/listings/add"
             element={<AddListingForm />} />
-          {/* <Route
-            path="/logout"
-            element={<Logout logout={logout} />} /> */}
           <Route
             path='*'
             element={<HomePage />} />
