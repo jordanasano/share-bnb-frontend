@@ -2,20 +2,20 @@ import React from "react";
 import ListingCard from "./ListingCard";
 
 
-/** TODO:
- *  CompanyCardList
+/**
+ *  ListingCardList
  *
  *  Props:
- *    - companies: array of companies from API [ {company}, ... ]
+ *    - companies: array of lompanies from API [ { listing }, ... ]
  *
  *  State:
  *    - None
  *
- *  GetCompanyCardList -> CompanyCardList -> CompanyCard
+ *  GetListingCardList -> ListingCardList -> ListingCard
  */
 
 function ListingCardList({ listings }) {
-  // console.log("CompanyCardList");
+  // console.log("ListingCardList");
 
   return (
     <div className="ListingCardList">

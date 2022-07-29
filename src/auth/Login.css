@@ -4,6 +4,9 @@
   margin: 0 auto;
 }
 
-.Login-container {
+/* .Login-container {
   height: 100vh;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */

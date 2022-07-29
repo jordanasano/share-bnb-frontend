@@ -8,11 +8,11 @@ import Signup from "./auth/Signup";
 import { useContext } from "react";
 import userContext from "./userContext";
 
-/** TODO:
+/**
  *  RoutesList
  *
  *  Props:
- *    - functions: { login, signup } from App
+ *    - functions: { login, signup, addListing } from App
  *
  *  State:
  *    - None
@@ -20,11 +20,13 @@ import userContext from "./userContext";
  *  Context:
  *    - user { username, firstName, lastName, email, isAdmin }
  *
- *  App -> RoutesList -> Routes
+ *  App -> RouteList -> Routes
  */
 
-function RouteList({ logout, signUp, logIn, updateUser }) {
-  console.log("We're in the RouteList component");
+function RouteList({ functions }) {
+  // console.log("We're in the RouteList component");
+
+  // const { login, signup, addListing } = functions;
 
   const user = useContext(userContext);
 
@@ -44,6 +46,7 @@ function RouteList({ logout, signUp, logIn, updateUser }) {
             element={<GetListingDetail />} />
           <Route
             path="/listings/add"
+            // element={<AddListingForm addListing={addListing}/>} />
             element={<AddListingForm />} />
           <Route
             path='*'
@@ -62,10 +65,12 @@ function RouteList({ logout, signUp, logIn, updateUser }) {
             element={<GetListingDetail />} />
           <Route
             path="/login"
-            element={<Login logIn={logIn} />} />
+            // element={<Login login={login} />} />
+            element={<Login />} />
           <Route
             path="/signup"
-            element={<Signup signUp={signUp} />} />
+            // element={<Signup signup={signup} />} />
+            element={<Signup />} />
           <Route
             path='*'
             element={<Navigate to='/' />} />

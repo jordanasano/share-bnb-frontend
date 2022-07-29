@@ -3,7 +3,7 @@ import "./Navigation.css";
 import userContext from "./userContext";
 import { useContext } from "react";
 
- /**  Navigation TODO:
+ /**  Navigation
  *
  *  Props:
  *    - logout: fn passed from App
@@ -12,7 +12,7 @@ import { useContext } from "react";
  *    - None
  *
  *  Context:
- *    - user { username, firstName, lastName, email, isAdmin }
+ *    - user { username, id, first_name, last_name }
  *
  *  App -> Navigation
  */
@@ -22,15 +22,16 @@ function Navigation({logout}) {
 
   const user = useContext(userContext);
 
-  //TODO: add login from joel's
   return (
     <nav className="Navigation">
-      <NavLink className="home" to="/">
-        ShareBnB
-      </NavLink>
+      <span>
+        <NavLink className="home" to="/">
+          ShareBnB
+        </NavLink>
+      </span>
       {user
         ?
-        (<div>
+        (<span>
           <NavLink className="Navigation-listings" to="/listings">
             Listing
           </NavLink>
@@ -40,8 +41,8 @@ function Navigation({logout}) {
           <NavLink to="/">
             <span onClick={logout}>Log out {user.username}</span>
           </NavLink>
-        </div>)
-        : (<div>
+        </span>)
+        : (<span>
           <NavLink className="Navigation-listings" to="/listings">
             Listing
           </NavLink>
@@ -51,7 +52,7 @@ function Navigation({logout}) {
           <NavLink className="Navigation-signup" to="/signup">
             Signup
           </NavLink>
-        </div>)
+        </span>)
       }
     </nav>
   );

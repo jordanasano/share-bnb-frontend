@@ -12,13 +12,13 @@ const LOCAL_STORAGE_TOKEN_KEY = 'share-bnb-token';
 /** Site application.
  *
  *  State:
- *  - user {username, firstName, lastName, email, isAdmin}
+ *  - user { username, id, first_name, last_name }
  *  - token as string for login auth
  *
  *  Props:
  *  - None
  *
- *  App -> { Navigation, RoutesList }
+ *  App -> { Navigation, RouteList }
  *
  **/
 
@@ -28,16 +28,27 @@ function App() {
     localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY));
   const [user, setUser] = useState(null);
 
+
   /** Gets user from API when token changes */
   useEffect(function fetchUserInfoFromAPI() {
 
     if (token) {
-      // putTokenInLS(token);
       // const { id } = jwt_decode(token);
-      //TODO: try catch - for bad token and catch error
+      putTokenInLS(token);
       getUser(token);
     }
   }, [token]);
+
+
+  /** Add token in localStorage, or retreive if it already exists in LS */
+  function putTokenInLS(token) {
+    const joblyToken = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+
+    if (!joblyToken && token) {
+      localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
+    }
+  }
+
 
   /** Get current user details */
   async function getUser(token) {
@@ -47,12 +58,21 @@ function App() {
   }
 
 
+  /** Login user and update token */
+  //TODO:
+
+  /** Signup new user and update token */
+  //TODO:
+
   /** Log out user and resets token and user to initial values */
   function logout() {
     setToken(t => "");
     setUser(u => null);
     localStorage.removeItem('share-bnb-token');
   }
+
+  /** Add new listing and navigate to /listings */
+  //TODO:
 
 
   if (token && !user) return <h1>Loading...</h1>
@@ -62,6 +82,7 @@ function App() {
       <userContext.Provider value={user}>
         <BrowserRouter>
           <Navigation logout={logout}/>
+          {/* <RouteList functions={{ login, signup, addListing }}/> */}
           <RouteList />
         </BrowserRouter>
       </userContext.Provider>

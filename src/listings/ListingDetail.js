@@ -1,20 +1,20 @@
 import React from "react";
 
 
-/** TODO:
- *  CompanyDetail
+/**
+ *  ListingDetail
  *
  *  Props:
- *    - company: details from API as obj { company }
+ *    - listing: details from API as obj { listing }
  *
  *  State:
  *    - None
  *
- *  GetCompanyDetail -> CompanyDetail -> JobCardList
+ *  GetListingDetail -> ListingDetail -> JobCardList
  */
 
 function ListingDetail({ listing }) {
-  // console.log("CompanyDetail");
+  // console.log("ListingDetail");
 
   return (
     <div className="ListingDetail">

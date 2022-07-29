@@ -3,26 +3,24 @@ import React, { useState, useEffect } from "react";
 import ListingCardList from "./ListingCardList";
 import ShareBNBApi from "../api";
 
-/** TODO:
- *  GetCompanyCardList
+/**
+ *  GetListingCardList
  *
  *  Props:
  *    - None
  *
  *  State:
- *    - companies: array of companies from API [ {company}, ... ]
+ *    - listings: array of listings from API [ { listing }, ... ]
  *
- *  RoutesList -> GetCompanyCardList -> CompanyCardList
+ *  RouteList -> GetListingCardList -> ListingCardList
  */
 
 function GetListingCardList() {
   const [listings, setListings] = useState(null);
   // const [searchTerm, setSearchTerm] = useState(null);
-  // console.log('listings =', listings);
 
-  /** Get all listings on mount and searchTerm update */
+  /** Get all listings on mount */
   useEffect(function fetchListingsFromAPI() {
-    /** Get all companies from API with optional search term */
     async function getListings() {
       const listings = await ShareBNBApi.getListings();
       setListings(l => listings);

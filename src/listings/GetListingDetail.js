@@ -3,23 +3,24 @@ import { useParams } from "react-router-dom";
 import ListingDetail from "./ListingDetail";
 import ShareBNBApi from "../api";
 
-/** TODO:
- *  GetCompanyDetail
+/**
+ *  GetListingDetail
  *
  *  Props:
  *    - None
  *
  *  State:
- *    - company: details from API as obj { company }
+ *    - listing: details from API as obj { listing }
  *
- *  RoutesList -> GetCompanyDetail -> CompanyDetail
+ *  RouteList -> GetListingDetail -> ListingDetail
  */
 
 function GetListingDetail() {
 
   const { id } = useParams();
-  const [listing, setListing] = useState(null);
+  const [ listing, setListing ] = useState(null);
 
+  /** Get listing on mount using id in url param */
   useEffect(function fetchListing() {
     async function getListing() {
       const listing = await ShareBNBApi.getListing(id);

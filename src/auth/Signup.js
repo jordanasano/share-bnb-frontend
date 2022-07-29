@@ -1,18 +1,25 @@
 import { useState } from "react";
 import "./Signup.css";
-//TODO:
-/** Registers a new user
- *
- *  props: signup()
- *
- *  state: formData
- *
- *  RouteList -> Signup */
 
- function Signup({ signUp }) {
+/**
+ *  SignupForm
+ *
+ *  Props:
+ *    - initialFormData: { username, password, first_name, last_name }
+ *    - signup: function to call in parent.
+ *
+ *  State:
+ *    - formData
+ *
+ *  RouteList -> SignupForm
+ */
+
+ function Signup({ signup }) {
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState(null);
 
+
+  /** Update form input. */
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(st => ({
@@ -21,14 +28,13 @@ import "./Signup.css";
     }));
   }
 
-
-  // Stops the page from reloading and invokes signup function
-  // with user input
+  /** Call parent function and clear form. */
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      await signUp(formData);
+      await signup(formData);
     } catch(err) {
+      // console.error('errors are ', err)
       setErrors(err);
     }
   }

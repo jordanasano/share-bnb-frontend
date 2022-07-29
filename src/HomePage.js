@@ -1,18 +1,21 @@
 import "./HomePage.css";
 import userContext from "./userContext";
 import { useContext } from "react";
-/** To render homepage.
+
+
+/**
+ *  Homepage
+ *
+ *  Props:
+ *    - None
+ *
+ *  State:
+ *    - None
  *
  *  Context:
- *      - user
- *          TODO: update what a user has
- *          (i.e. { username, firstName, lastName, email, isAdmin })
+ *    - user: { username, id, first_name, last_name }
  *
- *  No props.
- *
- *  No state.
- *
- *  RouteList -> HomePage
+ *  RouteList -> Homepage
  */
 
 function HomePage() {
@@ -23,7 +26,7 @@ function HomePage() {
   return (
     <div className="HomePage">
       <h1>ShareBnB</h1>
-      {user && <h2>Welcome back, {user.firstName}!</h2>}
+      {user && <h2>Welcome back, {user.first_name}!</h2>}
     </div>
   );
 }
