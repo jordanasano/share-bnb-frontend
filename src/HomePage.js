@@ -19,7 +19,7 @@ import { useContext } from "react";
  */
 
 function HomePage() {
-  console.log("We're in the HomePage component");
+  // console.log("We're in the HomePage component");
 
   const user = useContext(userContext);
 

@@ -18,7 +18,7 @@ import { useContext } from "react";
  */
 
 function Navigation({logout}) {
-  console.log("We're in the Navigation component");
+  // console.log("We're in the Navigation component");
 
   const user = useContext(userContext);
 

@@ -41,34 +41,39 @@ import "./SignupForm.css";
 
   return (
     <form onSubmit={handleSubmit} className='SignupForm-container'>
+
+      <h2>Signup</h2>
+
       {errors && (
         errors.map((err, idx) =>
           <p key={idx} className='SignupForm-error'>{err.slice(8)}</p>)
       )}
-      <label htmlFor="username"></label>
+
+      <label htmlFor="username">Username</label>
       <input
         id="username"
         name="username"
         onChange={handleChange}
-        placeholder="Enter username..." />
-      <label htmlFor="password"></label>
+      />
+      <label htmlFor="password">Password</label>
       <input
         id="password"
         name="password"
+        type="password"
         onChange={handleChange}
-        placeholder="Enter password..." />
-      <label htmlFor="firstName"></label>
+      />
+      <label htmlFor="firstName">First Name</label>
       <input
         id="firstName"
         name="first_name"
         onChange={handleChange}
-        placeholder="Enter first name..." />
-      <label htmlFor="lastName"></label>
+      />
+      <label htmlFor="lastName">Last Name</label>
       <input
         id="lastName"
         name="last_name"
         onChange={handleChange}
-        placeholder="Enter last name..." />
+      />
       <button>Create Account!</button>
     </form>
   );

@@ -1,11 +1,8 @@
 .Navigation {
   display: flex;
   background-color: #4137a0;
-  /* height: 40px; */
   font-size: 20px;
   text-align: center;
-  /* padding: 20px; */
-  /* font-weight: bold; */
   text-decoration: none;
   flex-direction: row;
   justify-content: space-between;
@@ -20,7 +17,6 @@
 }
 
 .Navigation a:hover {
-  /* background-color: #9754CB; */
   color: #d2f2ff;
 }
 
@@ -28,53 +24,3 @@
   font-weight: bold;
   color: #28104E;
 }
-
-/* .Navigation {
-    background-color: tomato;
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  } */
-
-/* .Navigation-home {
-  text-align: left;
-  margin-right: 80%;
-  margin-left: 5%;
-  text-decoration: none;
-}
-
-.Navigation-listings {
-  text-align: right;
-  margin-left: -360px;
-  margin-right: 60px;
-  text-decoration: none;
-}
-
-.Navigation-signup {
-  text-align: right;
-  margin-right: 60px;
-  text-decoration: none;
-}
-
-.Navigation-add {
-  text-align: right;
-  margin-right: 60px;
-  text-decoration: none;
-}
-
-.Navigation-login {
-  margin-right: 60px;
-  text-decoration: none;
-}
-
-.Navigation-logout {
-  text-align: right;
-  margin-right: 180px;
-  text-decoration: none;
-} */
-
-/* .active {
-  color: aquamarine;
-} */

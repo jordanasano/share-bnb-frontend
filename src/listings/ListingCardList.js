@@ -19,6 +19,9 @@ function ListingCardList({ listings }) {
 
   return (
     <div className="ListingCardList">
+
+      <h2>Listings</h2>
+
       {listings.map(l =>
         <ListingCard key={l.id} listing={l} />
       )}

@@ -45,22 +45,27 @@ function LoginForm({ login }) {
 
   return (
     <form onSubmit={handleSubmit} className='LoginForm-container'>
+
+      <h2>Login</h2>
+
       {errors && (
         errors.map((err, idx) =>
           <p key={idx} className='LoginForm-error'>{err}</p>)
       )}
+
       <label htmlFor="username">Username</label>
       <input
         id="username"
         name="username"
         onChange={handleChange}
-        placeholder="Enter username..." />
+      />
       <label htmlFor="password">Password</label>
       <input
         id="password"
         name="password"
+        type="password"
         onChange={handleChange}
-        placeholder="Enter password..." />
+      />
       <button>Login</button>
     </form>
   );

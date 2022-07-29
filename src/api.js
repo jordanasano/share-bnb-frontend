@@ -2,18 +2,17 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
 
-/** API Class.
- */
+/** API Class*/
 
 class ShareBNBApi {
 
   static token = "";
 
   static async request(endpoint, data = {}, method = "get") {
-    console.debug("API Call:", endpoint, data, method);
+    // console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    
+
     const headers = data.files
       ? {
         "Content-Type": "multipart/form-data",
@@ -30,7 +29,7 @@ class ShareBNBApi {
       return res.data;
 
     } catch (err) {
-      console.error("API Error:", err.response);
+      // console.error("API Error:", err.response);
       let message = err.response.data.error.message;
       throw Array.isArray(message) ? message : [message];
     }
@@ -75,7 +74,6 @@ class ShareBNBApi {
    */
 
   static async addListing(listingDetails) {
-    console.log("addListing got =", listingDetails);
     let res = await this.request(
       'listings',
       listingDetails,
@@ -114,7 +112,6 @@ class ShareBNBApi {
     return res.token;
   }
 
-  //TODO:
   /** On registering - get token by making a POST request to /signup:
   * { username, password, first_name, last_name, email } => token
   */

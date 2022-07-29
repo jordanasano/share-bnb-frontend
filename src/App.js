@@ -1,7 +1,7 @@
 import './App.css';
 import Navigation from './Navigation';
 import RouteList from './RouteList';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate } from 'react-router-dom';
 import { useEffect, useState, useNavigate } from "react";
 import userContext from './userContext';
 import ShareBNBApi from './api';
@@ -26,7 +26,7 @@ function App() {
 
   const [token, setToken] = useState(
     localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY));
-  console.log(token)
+  // console.log(token)
   const [user, setUser] = useState(null);
   // const navigate = useNavigate();
 
@@ -60,14 +60,12 @@ function App() {
 
 
   /** Login user and update token */
-  //TODO: Make sure this works
   async function login({ username, password }) {
     const token = await ShareBNBApi.loginUser({ username, password });
     setToken(token);
   }
 
   /** Signup new user and update token */
-  //TODO: Make sure this works
   async function signup({ username, password, first_name, last_name }) {
     const token = await ShareBNBApi.signupUser({
       username,
@@ -79,7 +77,6 @@ function App() {
   }
 
   /** Log out user and resets token and user to initial values */
-  //TODO: Make sure this works
   function logout() {
     setToken(null);
     setUser(null);
@@ -87,10 +84,10 @@ function App() {
   }
 
   /** Add new listing and navigate to /listings */
-  //TODO: Make sure this works
   async function addListing({ title, description, price_per_day, location, files }) {
     await ShareBNBApi.addListing({ title, description, price_per_day, location, files });
     // navigate('/listings');
+    // return <Navigate to="/listings" />
   }
 
 
@@ -102,7 +99,6 @@ function App() {
         <BrowserRouter>
           <Navigation logout={logout} />
           <RouteList login={login} signup={signup} addListing={addListing} />
-          <RouteList />
         </BrowserRouter>
       </userContext.Provider>
     </div>

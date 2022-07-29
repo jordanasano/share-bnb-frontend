@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ListingCard.css";
 
 
@@ -17,8 +17,6 @@ import "./ListingCard.css";
 
 function ListingCard({ listing }) {
   // console.log("ListingCard");
-
-  const navigate = useNavigate();
 
   return (
     <div className="ListingCard">

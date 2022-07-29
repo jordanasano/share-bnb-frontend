@@ -21,18 +21,16 @@ form input {
 form button {
 
   color: white;
-
   background-color: #6237A0;
   border: 2px solid #6237A0;
-
   border-radius: 5px;
   padding: 8px 16px;
 }
 form button:hover {
 
   color: white;
-  background-color: #5823a2;
-  border: 2px solid #5823a2;
+  background-color: #6237A0;
+  border: 2px solid #6237A0;
   border-radius: 5px;
   padding: 8px 16px;
 }
