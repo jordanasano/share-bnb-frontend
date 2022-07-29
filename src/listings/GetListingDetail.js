@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ListingDetail from "./ListingDetail";
-import ShareBNB from "../api";
+import ShareBNBApi from "../api";
 
 /** TODO:
  *  GetCompanyDetail
@@ -16,27 +16,25 @@ import ShareBNB from "../api";
  */
 
 function GetListingDetail() {
-  // console.log("GetCompanyDetail");
 
-  // const { handle } = useParams();
-  // const [company, setCompany] = useState(null);
+  const { id } = useParams();
+  const [listing, setListing] = useState(null);
 
-  // useEffect(function fetchCompanyFromAPI() {
-  //   async function getCompany() {
-  //     const companyData = await JoblyAPI.getCompany(handle);
-  //     setCompany(c => companyData);
-  //   }
-  //   getCompany();
+  useEffect(function fetchListing() {
+    async function getListing() {
+      const listing = await ShareBNBApi.getListing(id);
+      setListing(l => listing);
+    }
+    getListing();
 
-  // }, []);
+  }, [id]);
 
   return (
     <div className="GetListingDetail">
-      {/* {company
-        ? <ListingDetail company={company} />
+      {listing
+        ? <ListingDetail listing={listing} />
         : <p>Loading... </p>
-      } */}
-      <ListingDetail />
+      }
     </div>
   );
 }

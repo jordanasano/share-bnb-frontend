@@ -3,9 +3,8 @@ import HomePage from './HomePage';
 import GetListingCardList from './listings/GetListingCardList';
 import GetListingDetail from './listings/GetListingDetail';
 import AddListingForm from './listings/AddListingForm';
-import Login from "./Login";
-import Signup from "./Signup";
-import Logout from "./Logout";
+import Login from "./auth/Login";
+import Signup from "./auth/Signup";
 import { useContext } from "react";
 import userContext from "./userContext";
 
@@ -46,9 +45,9 @@ function RouteList({ logout, signUp, logIn, updateUser }) {
           <Route
             path="/listings/add"
             element={<AddListingForm />} />
-          <Route
+          {/* <Route
             path="/logout"
-            element={<Logout logout={logout} />} />
+            element={<Logout logout={logout} />} /> */}
           <Route
             path='*'
             element={<HomePage />} />

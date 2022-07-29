@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import SearchForm from "./SearchForm";
 import ListingCardList from "./ListingCardList";
-import ShareBNB from "../api";
+import ShareBNBApi from "../api";
 
 /** TODO:
  *  GetCompanyCardList
@@ -15,24 +15,20 @@ import ShareBNB from "../api";
  *  RoutesList -> GetCompanyCardList -> CompanyCardList
  */
 
-function GetCompanyCardList() {
-  // console.log("GetCompanyCardList");
-
-  // const [companies, setCompanies] = useState(null);
+function GetListingCardList() {
+  const [listings, setListings] = useState(null);
   // const [searchTerm, setSearchTerm] = useState(null);
+  // console.log('listings =', listings);
 
-  // /** Get all companies on mount and searchTerm update */
-  // useEffect(function fetchCompaniesFromAPI() {
-  //   getCompanies(searchTerm);
-  // }, [searchTerm]);
-
-  // /** Get all companies from API with optional search term */
-  // async function getCompanies(term) {
-  //   // FIXME:JoblyAPI.token = token;
-  //   // console.log("GET COMPANY JOBLY TOKEN", token);
-  //   const companiesData = await JoblyAPI.getCompaniesFromAPI(term);
-  //   setCompanies(c => companiesData);
-  // }
+  /** Get all listings on mount and searchTerm update */
+  useEffect(function fetchListingsFromAPI() {
+    /** Get all companies from API with optional search term */
+    async function getListings() {
+      const listings = await ShareBNBApi.getListings();
+      setListings(l => listings);
+    }
+    getListings();
+    }, []);
 
   // /** Get search term from form and set in state */
   // function updateSearchTerm(formData) {
@@ -40,34 +36,30 @@ function GetCompanyCardList() {
   //   setSearchTerm(t => term);
   // }
 
-  // return (
-  //   <div className="GetCompanyCardList">
-  //     <SearchForm
-  //       handleSave={updateSearchTerm}
-  //       initialFormData={{ name: "" }}
-  //     />
-
-  //     {companies
-  //       ? <CompanyCardList companies={companies} />
-  //       : <p>Loading... </p>
-  //     }
-
-  //     {companies && companies.length === 0 &&
-  //       <p>Sorry, no results were found!</p>
-  //     }
-  //   </div>
-  // );
-
-    return (
+  return (
     <div className="GetListingCardList">
-      {/* <SearchForm
-        handleSave={updateSearchTerm}
-        initialFormData={{ name: "" }}
-      /> */}
 
-      <ListingCardList />
+      {listings
+        ? <ListingCardList listings={listings} />
+        : <p>Loading... </p>
+      }
+
+      {listings && listings.length === 0 &&
+        <p>Sorry, no results were found!</p>
+      }
     </div>
   );
+
+  //   return (
+  //   <div className="GetListingCardList">
+  //     {/* <SearchForm
+  //       handleSave={updateSearchTerm}
+  //       initialFormData={{ name: "" }}
+  //     /> */}
+
+  //     <ListingCardList />
+  //   </div>
+  // );
 }
 
-export default GetCompanyCardList;
+export default GetListingCardList;

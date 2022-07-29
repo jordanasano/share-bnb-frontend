@@ -22,9 +22,10 @@ function ListingCard({ listing }) {
         {listing.title}
       </Link>
       <p>{listing.description}</p>
-      {/* {listing.logoUrl &&
-        <img src={`${company.logoUrl}`} alt={`${company.name}`}></img>
-      } */}
+      <p>Per day: ${listing.price_per_day}</p> 
+       {listing.images[0] &&
+        <img src={`${listing.images[0].path}`} alt={`${listing.title}`}></img>
+      }
       <hr></hr>
     </div>
   );

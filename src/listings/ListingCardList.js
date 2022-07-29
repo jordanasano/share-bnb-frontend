@@ -19,11 +19,10 @@ function ListingCardList({ listings }) {
 
   return (
     <div className="ListingCardList">
-      {/* {listings.map(l =>
+      {listings.map(l =>
         <ListingCard key={l.id} listing={l} />
-      )} */}
+      )}
 
-      <ListingCard />
     </div>
   );
 }
