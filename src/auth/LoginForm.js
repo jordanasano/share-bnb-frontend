@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Login.css";
+import "./LoginForm.css";
 
 /**
  *  LoginForm
@@ -18,7 +18,7 @@ import "./Login.css";
  */
 
 //TODO: pass in initial form data?. check
-function Login({ login }) {
+function LoginForm({ login }) {
 
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState(null);
@@ -44,10 +44,10 @@ function Login({ login }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='Login-container'>
+    <form onSubmit={handleSubmit} className='LoginForm-container'>
       {errors && (
         errors.map((err, idx) =>
-          <p key={idx} className='Login-error'>{err}</p>)
+          <p key={idx} className='LoginForm-error'>{err}</p>)
       )}
       <label htmlFor="username">Username</label>
       <input
@@ -67,4 +67,4 @@ function Login({ login }) {
 
 }
 
-export default Login;
+export default LoginForm;

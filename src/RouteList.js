@@ -3,8 +3,8 @@ import HomePage from './HomePage';
 import GetListingCardList from './listings/GetListingCardList';
 import GetListingDetail from './listings/GetListingDetail';
 import AddListingForm from './listings/AddListingForm';
-import Login from "./auth/Login";
-import Signup from "./auth/Signup";
+import LoginForm from "./auth/LoginForm";
+import SignupForm from "./auth/SignupForm";
 import { useContext } from "react";
 import userContext from "./userContext";
 
@@ -65,12 +65,12 @@ function RouteList({ functions }) {
             element={<GetListingDetail />} />
           <Route
             path="/login"
-            // element={<Login login={login} />} />
-            element={<Login />} />
+            // element={<LoginForm login={login} />} />
+            element={<LoginForm />} />
           <Route
             path="/signup"
-            // element={<Signup signup={signup} />} />
-            element={<Signup />} />
+            // element={<SignupForm signup={signup} />} />
+            element={<SignupForm />} />
           <Route
             path='*'
             element={<Navigate to='/' />} />

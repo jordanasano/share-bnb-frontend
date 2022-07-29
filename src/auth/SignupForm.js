@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Signup.css";
+import "./SignupForm.css";
 
 /**
  *  SignupForm
@@ -14,7 +14,7 @@ import "./Signup.css";
  *  RouteList -> SignupForm
  */
 
- function Signup({ signup }) {
+ function SignupForm({ signup }) {
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState(null);
 
@@ -40,10 +40,10 @@ import "./Signup.css";
   }
 
   return (
-    <form onSubmit={handleSubmit} className='Signup-container'>
+    <form onSubmit={handleSubmit} className='SignupForm-container'>
       {errors && (
         errors.map((err, idx) =>
-          <p key={idx} className='Signup-error'>{err.slice(8)}</p>)
+          <p key={idx} className='SignupForm-error'>{err.slice(8)}</p>)
       )}
       <label htmlFor="username"></label>
       <input
@@ -81,4 +81,4 @@ import "./Signup.css";
 
 }
 
-export default Signup;
+export default SignupForm;
