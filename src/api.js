@@ -13,7 +13,14 @@ class ShareBNBApi {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${ShareBNBApi.token}` };
+    
+    const headers = data.files
+      ? {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${ShareBNBApi.token}`
+      }
+      : { Authorization: `Bearer ${ShareBNBApi.token}` };
+
     const params = (method === "get")
       ? data
       : {};
@@ -68,7 +75,7 @@ class ShareBNBApi {
    */
 
   static async addListing(listingDetails) {
-
+    console.log("addListing got =", listingDetails);
     let res = await this.request(
       'listings',
       listingDetails,
@@ -112,7 +119,7 @@ class ShareBNBApi {
   * { username, password, first_name, last_name, email } => token
   */
 
-   static async getUserDetails() {
+  static async getUserDetails() {
     let res = await this.request(
       'user'
     );

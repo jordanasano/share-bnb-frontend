@@ -60,21 +60,15 @@ import "./SignupForm.css";
       <label htmlFor="firstName"></label>
       <input
         id="firstName"
-        name="firstName"
+        name="first_name"
         onChange={handleChange}
         placeholder="Enter first name..." />
       <label htmlFor="lastName"></label>
       <input
         id="lastName"
-        name="lastName"
+        name="last_name"
         onChange={handleChange}
         placeholder="Enter last name..." />
-      <label htmlFor="email"></label>
-      <input
-        id="email"
-        name="email"
-        onChange={handleChange}
-        placeholder="Enter email..." />
       <button>Create Account!</button>
     </form>
   );

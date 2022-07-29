@@ -15,23 +15,33 @@ import { useState } from "react";
  */
 
 function AddListingForm({ addListing }) {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(new FormData());
   const [errors, setErrors] = useState(null);
-
+  const inputFile = document.getElementById("files");
 
   /** Update form input. */
   function handleChange(evt) {
     const { name, value } = evt.target;
-    setFormData(st => ({
-      ...st,
-      [name]: value,
-    }));
+    if(name !== 'files'){
+      setFormData(st => ({
+        ...st,
+        [name]: value,
+      }));
+    } else {
+      const files = []
+      console.log(inputFile.files)
+      for (const file of inputFile.files) {
+        files.push(file);
+      }
+      setFormData(fd => ({...fd, files}))
+    }
   }
 
 
   /** Call parent function and clear form. */
   async function handleSubmit(evt) {
     evt.preventDefault();
+    console.log(formData);
     try {
       await addListing(formData);
     } catch (err) {
@@ -41,42 +51,47 @@ function AddListingForm({ addListing }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='Signup-container'>
+    <form 
+      onSubmit={handleSubmit} 
+      className='Signup-container' 
+      encType="multipart/form-data">
       {errors && (
         errors.map((err, idx) =>
           <p key={idx} className='Signup-error'>{err.slice(8)}</p>)
       )}
-      <label htmlFor="username"></label>
+      <label htmlFor="title"></label>
       <input
-        id="username"
-        name="username"
+        id="title"
+        name="title"
         onChange={handleChange}
-        placeholder="Enter username..." />
-      <label htmlFor="password"></label>
+        placeholder="Enter title..." />
+      <label htmlFor="pricePerDay"></label>
       <input
-        id="password"
-        name="password"
+        id="pricePerDay"
+        name="price_per_day"
+        type="float"
         onChange={handleChange}
-        placeholder="Enter password..." />
-      <label htmlFor="firstName"></label>
+        placeholder="Enter pricePerDay..." />
+      <label htmlFor="location"></label>
       <input
-        id="firstName"
-        name="firstName"
+        id="location"
+        name="location"
         onChange={handleChange}
-        placeholder="Enter first name..." />
-      <label htmlFor="lastName"></label>
+        placeholder="Enter location..." />
+      <label htmlFor="description"></label>
       <input
-        id="lastName"
-        name="lastName"
+        id="description"
+        name="description"
         onChange={handleChange}
-        placeholder="Enter last name..." />
-      <label htmlFor="email"></label>
-      <input
-        id="email"
-        name="email"
+        placeholder="Enter desciption..." />
+      <label htmlFor="files"></label>
+      <input 
+        type="file" 
+        name="files" 
+        id="files"
         onChange={handleChange}
-        placeholder="Enter email..." />
-      <button>Create Account!</button>
+        multiple />
+      <button>Add Listing!</button>
     </form>
   );
 

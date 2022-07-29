@@ -20,7 +20,8 @@ function ListingDetail({ listing }) {
     <div className="ListingDetail">
       <h2>{listing.title} </h2>
       <h4>{listing.description}</h4>
-      {listing.images.map(i => <img src={`${i.path}`} alt={`${listing.title}`} key={i.id}></img>)}
+      {listing.images.map(i => 
+        <img src={`${i.path}`} alt={`${listing.title}`} key={i.id}></img>)}
       <hr></hr>
     </div>
   );

@@ -23,9 +23,9 @@ import userContext from "./userContext";
  *  App -> RouteList -> Routes
  */
 
-function RouteList({ functions }) {
+function RouteList({ login, signup, addListing }) {
   // console.log("We're in the RouteList component");
-
+  // console.log(functions)
   // const { login, signup, addListing } = functions;
 
   const user = useContext(userContext);
@@ -46,8 +46,7 @@ function RouteList({ functions }) {
             element={<GetListingDetail />} />
           <Route
             path="/listings/add"
-            // element={<AddListingForm addListing={addListing}/>} />
-            element={<AddListingForm />} />
+            element={<AddListingForm addListing={addListing}/>} />
           <Route
             path='*'
             element={<HomePage />} />
@@ -65,12 +64,10 @@ function RouteList({ functions }) {
             element={<GetListingDetail />} />
           <Route
             path="/login"
-            // element={<LoginForm login={login} />} />
-            element={<LoginForm />} />
+            element={<LoginForm login={login} />} />
           <Route
             path="/signup"
-            // element={<SignupForm signup={signup} />} />
-            element={<SignupForm />} />
+            element={<SignupForm signup={signup} />} />
           <Route
             path='*'
             element={<Navigate to='/' />} />
