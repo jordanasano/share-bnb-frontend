@@ -82,6 +82,29 @@ class ShareBNBApi {
     return res.listing;
   }
 
+  /** Delete listing:
+   *
+   *  { title, description, price_per_day, location, [ image_file , ... ] } =>
+   *
+   *  {"deleted_listing": { 
+   *    id, 
+   *    owner_id, 
+   *    title, 
+   *    description, 
+   *    price_per_day, 
+   *    location, 
+   *    images: [ image , ... ] }
+   */
+
+  static async deleteListing(listingId) {
+    let res = await this.request(
+      `listings/${listingId}`,
+      listingId,
+      "delete"
+    );
+    return res.deleted_listing;
+  }
+
   /** On login - get token by making a POST request to /login:
    * { username, password } => token
    */

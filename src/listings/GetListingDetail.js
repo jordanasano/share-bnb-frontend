@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ListingDetail from "./ListingDetail";
 import ShareBNBApi from "../api";
 
@@ -15,10 +15,11 @@ import ShareBNBApi from "../api";
  *  RouteList -> GetListingDetail -> ListingDetail
  */
 
-function GetListingDetail() {
+function GetListingDetail({deleteListing}) {
 
   const { id } = useParams();
   const [ listing, setListing ] = useState(null);
+  const navigate = useNavigate();
 
   /** Get listing on mount using id in url param */
   useEffect(function fetchListing() {
@@ -30,10 +31,24 @@ function GetListingDetail() {
 
   }, [id]);
 
+  async function handeClick() {
+    try {
+      await deleteListing(listing.id);
+      navigate("/listings");
+    } catch(err) {
+      throw new Error(err);
+    }
+  }
+
   return (
     <div className="GetListingDetail">
       {listing
-        ? <ListingDetail listing={listing} />
+        ? (
+            <>
+              <ListingDetail listing={listing} />
+              <button onClick={handeClick}>Delete listing!</button>
+            </>
+        )
         : <p>Loading... </p>
       }
     </div>

@@ -86,8 +86,11 @@ function App() {
   /** Add new listing and navigate to /listings */
   async function addListing({ title, description, price_per_day, location, files }) {
     await ShareBNBApi.addListing({ title, description, price_per_day, location, files });
-    // navigate('/listings');
-    // return <Navigate to="/listings" />
+  }
+
+  /** Add new listing and navigate to /listings */
+  async function deleteListing(listingId) {
+    await ShareBNBApi.deleteListing(listingId);
   }
 
 
@@ -98,7 +101,7 @@ function App() {
       <userContext.Provider value={user}>
         <BrowserRouter>
           <Navigation logout={logout} />
-          <RouteList login={login} signup={signup} addListing={addListing} />
+          <RouteList login={login} signup={signup} addListing={addListing} deleteListing={deleteListing} />
         </BrowserRouter>
       </userContext.Provider>
     </div>

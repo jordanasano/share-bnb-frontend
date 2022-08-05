@@ -12,7 +12,7 @@ import userContext from "./userContext";
  *  RoutesList
  *
  *  Props:
- *    - functions: { login, signup, addListing } from App
+ *    - functions: { login, signup, addListing, deleteListing } from App
  *
  *  State:
  *    - None
@@ -23,7 +23,7 @@ import userContext from "./userContext";
  *  App -> RouteList -> Routes
  */
 
-function RouteList({ login, signup, addListing }) {
+function RouteList({ login, signup, addListing, deleteListing }) {
   // console.log("We're in the RouteList component");
   // console.log(functions)
   // const { login, signup, addListing } = functions;
@@ -43,7 +43,7 @@ function RouteList({ login, signup, addListing }) {
             element={<GetListingCardList />} />
           <Route
             path="/listings/:id"
-            element={<GetListingDetail />} />
+            element={<GetListingDetail deleteListing={deleteListing}/>} />
           <Route
             path="/listings/add"
             element={<AddListingForm addListing={addListing}/>} />
